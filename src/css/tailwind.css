@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Karla-bold';
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Bold';
+  src: url('../fonts/Karla-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Karla-regular';
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url('../fonts/Karla-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Karla-light';
+  font-weight: 300;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Light';
+  src: url('../fonts/Karla-Light.ttf') format('truetype');
+}
+
+@tailwind base;
+@tailwind components;
+
+body,
+html {
+  font-size: 14px;
+  height: 100%;
+}
+
+@tailwind utilities;
