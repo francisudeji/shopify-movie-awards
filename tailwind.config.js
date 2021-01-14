@@ -12,7 +12,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        starjedi: ['Karla-regular', ...defaultTheme.fontFamily.sans],
+        'karla-light': ['Karla-regular', ...defaultTheme.fontFamily.sans],
+        'karla-regular': ['Karla-regular', ...defaultTheme.fontFamily.sans],
+        'karla-bold': ['Karla-bold', ...defaultTheme.fontFamily.sans],
         system: defaultTheme.fontFamily.sans
       },
       colors: {
