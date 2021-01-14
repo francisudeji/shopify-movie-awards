@@ -16,7 +16,7 @@ const App: React.FunctionComponent<FunctionComponent> = ({ Component, pageProps 
         <title>The Shoppies: Movie awards for entrepreneurs</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-full min-h-screen py-32 bg-black flex items-center justify-center">
+      <main className="h-full min-h-screen py-32 bg-gray-900 flex items-center justify-center">
         <Component {...pageProps} />
       </main>
     </div>
