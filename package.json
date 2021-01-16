@@ -10,11 +10,12 @@
   "dependencies": {
     "autoprefixer": "9.8.6",
     "axios": "^0.21.1",
-    "downshift": "^6.0.14",
+    "downshift": "^6.0.15",
     "next": "10.0.5",
     "postcss": "^8.2.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-icons": "^4.1.0",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
