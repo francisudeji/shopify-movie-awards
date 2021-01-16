@@ -2,16 +2,16 @@ import axios, { AxiosResponse, AxiosError } from 'axios'
 import { useState, useEffect } from 'react'
 
 type StatusInstance = 'idle' | 'loading' | 'error' | 'success'
-
-interface DataInstance {
+export type ErrorInstance = AxiosError | Error
+export interface MovieInstance {
   Title: string
   Year: string
 }
 
 export default function useFetch(search: string) {
   const [status, setStatus] = useState<StatusInstance>('idle')
-  const [data, setData] = useState<DataInstance[] | null>(null)
-  const [error, setError] = useState<AxiosError | Error | null>(null)
+  const [data, setData] = useState<Array<MovieInstance> | null>(null)
+  const [error, setError] = useState<ErrorInstance | null>(null)
   const [debouncedValue, setDebouncedValue] = useState<string>(search)
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function useFetch(search: string) {
           setStatus('success')
           setData(data.Search)
         },
-        (err: AxiosError | Error) => {
+        (err: ErrorInstance) => {
           setStatus('error')
           setError(err)
         }

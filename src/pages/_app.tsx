@@ -9,14 +9,14 @@ interface FunctionComponent {
 
 const App: React.FunctionComponent<FunctionComponent> = ({ Component, pageProps }) => {
   return (
-    <div className="antialiased text-gray-900 min-h-screen">
+    <div className="antialiased bg-gray-900 min-h-screen">
       <Head>
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#FFE81F" />
         <title>The Shoppies: Movie awards for entrepreneurs</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-full min-h-screen py-32 bg-gray-900 flex items-center justify-center">
+      <main className="h-full min-h-screen py-32 flex items-center justify-center">
         <Component {...pageProps} />
       </main>
     </div>
