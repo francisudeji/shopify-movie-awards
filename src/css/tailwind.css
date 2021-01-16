@@ -32,6 +32,11 @@ body,
 html {
   font-size: 14px;
   height: 100%;
+  scroll-behavior: smooth;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }
 
 @tailwind utilities;
