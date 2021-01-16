@@ -5,10 +5,11 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
   },
-  purge: ['./src/**/*.tsx'],
+  purge: ['./src/**/*.tsx', './src/**/*.ts'],
   theme: {
     screens: {
-      sm: '576px'
+      sm: '576px',
+      md: '768px'
     },
     extend: {
       keyframes: {

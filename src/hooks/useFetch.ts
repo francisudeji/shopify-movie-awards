@@ -6,10 +6,11 @@ export type ErrorInstance = AxiosError | Error
 export interface MovieInstance {
   Title: string
   Year: string
+  Type: 'movie'
 }
 
 export default function useFetch(search: string) {
-  const [status, setStatus] = useState<StatusInstance>('idle')
+  const [status, setStatus] = useState<StatusInstance>('success')
   const [data, setData] = useState<Array<MovieInstance> | null>(null)
   const [error, setError] = useState<ErrorInstance | null>(null)
   const [debouncedValue, setDebouncedValue] = useState<string>(search)
@@ -32,7 +33,8 @@ export default function useFetch(search: string) {
     setStatus('loading')
     axios
       .get(
-        `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${debouncedValue}`
+        `${process.env.NEXT_PUBLIC_API_URL}/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${debouncedValue}`,
+        { timeout: 120000 }
       )
       .then(
         ({ data }: AxiosResponse) => {
@@ -42,7 +44,9 @@ export default function useFetch(search: string) {
             return
           }
           setStatus('success')
-          setData(data.Search)
+
+          const movies = data.Search.filter((movie: MovieInstance) => movie.Type === 'movie')
+          setData(movies)
         },
         (err: ErrorInstance) => {
           setStatus('error')
