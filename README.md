@@ -1,8 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+# The Shoppies: Movie awards for entrepreneurs
 
-## Getting Started
+This is an app built with [Next.js](https://nextjs.org/) and the [OMDB API](https://omdbapi.com).
 
-First, run the development server:
+## Prerequisites
+
+- Create a free account on [OMDB's Website](http://www.omdbapi.com/apikey.aspx) and obtain an API key
+- Rename `.env.local.example` to `.env.local` and replace **YOUR_API_KEY** with your own API key
+
+## How to run
+
+- Clone this repository
+- `cd` into the newly created directory in your terminal
+- Install all dependencies with:
+
+```bash
+npm install
+# or
+yarn
+```
+
+- To start the local development server, run:
 
 ```bash
 npm run dev
@@ -12,19 +29,10 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `pages/index.ts`.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Check out [the hosted version](https://shoppies-omega.vercel.app/) to see the live app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on ZEIT Now
-
-The easiest way to deploy your Next.js app is to use the [ZEIT Now Platform](https://zeit.co/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Happy Coding!
