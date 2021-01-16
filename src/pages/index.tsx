@@ -8,6 +8,7 @@ import NominationList from '../components/NominationList'
 import { FiChevronDown, FiShare2 } from 'react-icons/fi'
 import useShare from '../hooks/useShare'
 import { useRouter } from 'next/router'
+import { DataInstance } from '../hooks/useShare'
 
 export default function Home() {
   const [copied, setCopied] = useState<true | false>(false)
@@ -30,16 +31,32 @@ export default function Home() {
   }, [copied])
 
   useEffect(() => {
+    let data: DataInstance
+
     const code = router.query.code
-    if (!code) return
 
-    console.log(code)
+    if (code) {
+      data = decode(code as string)
+      setSearchText(data!.searchText)
+      setNominations(data!.nominatedMovies)
+      return
+    }
 
-    const data = decode(code as string)
+    const codeFromLocalStorage = localStorage.getItem('shoppies')
 
-    setSearchText(data.searchText)
-    setNominations(data.nominatedMovies)
+    if (codeFromLocalStorage) {
+      data = decode(codeFromLocalStorage)
+      setSearchText(data!.searchText)
+      setNominations(data!.nominatedMovies)
+    }
+
+    return
   }, [router.query])
+
+  useEffect(() => {
+    const code = encode({ searchText, nominatedMovies: nominations })
+    window.localStorage.setItem('shoppies', code)
+  }, [searchText, nominations])
 
   function handleChange(e: React.SyntheticEvent<HTMLInputElement, Event>) {
     setSearchText(e.currentTarget.value)
@@ -63,8 +80,8 @@ export default function Home() {
   return (
     <div className="container mx-auto p-3 font-karla-regular -mt-20">
       <div className="space-y-6">
-        <div className="flex items-end justify-between space-x-4">
-          <h1 className="text-sw-yellow mx-auto block text-center text-6xl font-karla-bold">
+        <div className="flex flex-col items-center space-y-4 md:flex-row md:items-end md:justify-between md:space-x-4">
+          <h1 className="text-sw-yellow mx-auto block text-center text-4xl md:text-6xl font-karla-bold">
             The Shoppies
           </h1>
 
@@ -83,7 +100,7 @@ export default function Home() {
 
         {status === 'success' && movies !== null && (
           <div className="grid grid-rows-1">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 items-start text-center gap-4">
               <a
                 href="#movies"
                 className="text-white flex items-center space-x-2 font-semibold text-lg"
