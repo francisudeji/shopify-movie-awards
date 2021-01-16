@@ -1,6 +1,6 @@
 import { MovieInstance } from './useFetch'
 
-interface DataInstance {
+export interface DataInstance {
   searchText: string
   nominatedMovies: Array<MovieInstance>
 }
